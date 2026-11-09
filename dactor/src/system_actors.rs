@@ -16,7 +16,7 @@
 //!
 //! Well-known [`WireEnvelope::message_type`](crate::remote::WireEnvelope::message_type)
 //! values used by the transport router to dispatch incoming envelopes to the
-//! correct system actor mailbox. See [`system_router`](crate::system_router).
+//! correct system actor mailbox. See [`system_router`].
 
 use std::collections::{HashMap, HashSet};
 

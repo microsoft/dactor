@@ -3,7 +3,7 @@
 //! A [`VirtualPoolRef`] serializes all routing decisions through a single
 //! tokio task, providing zero-contention metrics and feed affinity.
 //! Callers interact with it via the [`ActorRef<A>`] trait, just like a
-//! regular actor reference or [`PoolRef`](crate::pool::PoolRef).
+//! regular actor reference or [`PoolRef`].
 //!
 //! # Architecture
 //!

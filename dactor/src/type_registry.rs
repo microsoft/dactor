@@ -1,6 +1,6 @@
 //! Type registry for remote message deserialization and actor factory lookup.
 //!
-//! When a node receives a [`WireEnvelope`](crate::remote::WireEnvelope) from the
+//! When a node receives a [`WireEnvelope`] from the
 //! network, it needs to deserialize the message body bytes back into a concrete
 //! Rust type. The [`TypeRegistry`] maps message type names (strings) to
 //! deserializer functions that know how to reconstruct the original type.

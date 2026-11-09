@@ -1,9 +1,9 @@
 //! Worker reference for distributed actor pools.
 //!
 //! [`WorkerRef`] wraps either a local [`ActorRef`] or a
-//! [`RemoteActorRef`](crate::remote_ref::RemoteActorRef), implementing
+//! [`RemoteActorRef`], implementing
 //! [`ActorRef<A>`] by delegating to the inner reference. This enables
-//! [`PoolRef`](crate::pool::PoolRef) to route messages across local and
+//! [`PoolRef`] to route messages across local and
 //! remote workers transparently.
 //!
 //! # Example
