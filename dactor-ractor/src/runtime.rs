@@ -1037,7 +1037,7 @@ impl RactorRuntime {
     /// are forwarded to the native SpawnManagerActor.
     ///
     /// Uses default configuration (unbounded mailboxes, no pooling).
-    /// For custom configuration, use [`start_system_actors_with_config()`].
+    /// For custom configuration, use [`Self::start_system_actors_with_config()`].
     pub async fn start_system_actors(&mut self) {
         self.start_system_actors_with_config(dactor::SystemActorConfig::default())
             .await;

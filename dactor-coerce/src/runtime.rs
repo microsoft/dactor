@@ -1015,7 +1015,7 @@ impl CoerceRuntime {
     /// `system_actor_refs()` returns the native actor references.
     ///
     /// Uses default configuration (unbounded mailboxes, no pooling).
-    /// For custom configuration, use [`start_system_actors_with_config()`].
+    /// For custom configuration, use [`Self::start_system_actors_with_config()`].
     pub fn start_system_actors(&mut self) {
         self.start_system_actors_with_config(dactor::SystemActorConfig::default());
     }
