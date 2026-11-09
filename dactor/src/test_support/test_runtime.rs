@@ -268,14 +268,13 @@ impl<A: Actor> ActorRef<A> for TestActorRef<A> {
         }
 
         let dispatch: BoxedDispatch<A> = Box::new(TypedDispatch { msg });
-        self.sender.send(Some(dispatch)).map_err(|e| {
+        self.sender.send(Some(dispatch)).inspect_err(|e| {
             let reason = if e.0.contains("mailbox full") {
                 DeadLetterReason::MailboxFull
             } else {
                 DeadLetterReason::ActorStopped
             };
             self.notify_dead_letter(std::any::type_name::<M>(), SendMode::Tell, reason);
-            e
         })
     }
 
@@ -324,14 +323,13 @@ impl<A: Actor> ActorRef<A> for TestActorRef<A> {
             reply_tx: tx,
             cancel,
         });
-        self.sender.send(Some(dispatch)).map_err(|e| {
+        self.sender.send(Some(dispatch)).inspect_err(|e| {
             let reason = if e.0.contains("mailbox full") {
                 DeadLetterReason::MailboxFull
             } else {
                 DeadLetterReason::ActorStopped
             };
             self.notify_dead_letter(std::any::type_name::<M>(), SendMode::Ask, reason);
-            e
         })?;
 
         // Wrap the reply channel so that outbound interceptors' on_reply()

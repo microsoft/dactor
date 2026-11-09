@@ -42,7 +42,7 @@ test-support = ["tokio/test-util"]
 tokio = { version = "1", features = ["full", "test-util"] }
 
 [build-dependencies]
-prost-build = "0.13"
+prost-build = "0.14.4"
 protoc-bin-vendored = "3"
 
 [[example]]

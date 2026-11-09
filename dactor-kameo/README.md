@@ -8,8 +8,8 @@ This crate implements the `ActorRuntime` trait from `dactor` using [kameo](https
 
 ```toml
 [dependencies]
-dactor = "0.2"
-dactor-kameo = "0.2"
+dactor = "0.4"
+dactor-kameo = "0.4"
 ```
 
 See the [dactor repository](https://github.com/microsoft/dactor) for full documentation and examples.

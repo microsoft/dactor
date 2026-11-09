@@ -264,7 +264,7 @@ impl TestCluster {
 
 impl Drop for TestCluster {
     fn drop(&mut self) {
-        for (_, handle) in self.nodes.iter_mut() {
+        for handle in self.nodes.values_mut() {
             let _ = handle.process.kill();
             let _ = handle.process.wait(); // reap to avoid zombies and port reuse races
         }
@@ -298,7 +298,7 @@ impl TestClusterBuilder {
                 .spawn()
                 .unwrap_or_else(|e| {
                     // Kill already-spawned nodes before panicking
-                    for (_, handle) in nodes.iter_mut() {
+                    for handle in nodes.values_mut() {
                         let _ = handle.process.kill();
                         let _ = handle.process.wait();
                     }
@@ -326,7 +326,7 @@ impl TestClusterBuilder {
                 // Kill this process and all already-spawned nodes before panicking
                 let _ = process.kill();
                 let _ = process.wait();
-                for (_, handle) in nodes.iter_mut() {
+                for handle in nodes.values_mut() {
                     let _ = handle.process.kill();
                     let _ = handle.process.wait();
                 }

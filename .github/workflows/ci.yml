@@ -30,15 +30,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: Check core
-        run: cargo check -p dactor --features test-support
-      - name: Check adapters
-        run: |
-          cargo check -p dactor-ractor
-          cargo check -p dactor-kameo
-          cargo check -p dactor-coerce
-          cargo check -p dactor-mock
-          # dactor-test-harness excluded: requires protoc installed
+      - name: Check workspace
+        run: cargo check --workspace --all-targets --all-features --locked
 
   clippy:
     name: Clippy
@@ -50,16 +43,8 @@ jobs:
         with:
           components: clippy
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: Clippy core
-        run: cargo clippy -p dactor --features test-support -- -D warnings
-      - name: Clippy ractor
-        run: cargo clippy -p dactor-ractor -- -D warnings
-      - name: Clippy kameo
-        run: cargo clippy -p dactor-kameo -- -D warnings
-      - name: Clippy coerce
-        run: cargo clippy -p dactor-coerce -- -D warnings
-      - name: Clippy mock
-        run: cargo clippy -p dactor-mock -- -D warnings
+      - name: Clippy workspace
+        run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
 
   test:
     name: Test
@@ -69,16 +54,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: Test core
-        run: cargo test -p dactor --features test-support
-      - name: Test ractor adapter
-        run: cargo test -p dactor-ractor
-      - name: Test kameo adapter
-        run: cargo test -p dactor-kameo
-      - name: Test coerce adapter
-        run: cargo test -p dactor-coerce
-      - name: Test mock cluster
-        run: cargo test -p dactor-mock
+      - name: Test workspace
+        run: cargo test --workspace --all-features --locked
 
   doc:
     name: Documentation
@@ -89,7 +66,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
       - name: Build docs
-        run: cargo doc -p dactor --no-deps --all-features
+        run: cargo doc --workspace --no-deps --all-features --locked
         env:
           RUSTDOCFLAGS: -Dwarnings
 
@@ -101,5 +78,5 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: Build examples
-        run: cargo build -p dactor --examples --features test-support
+      - name: Build all targets
+        run: cargo build --workspace --all-targets --all-features --locked
