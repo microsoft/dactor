@@ -246,7 +246,7 @@ impl OutboundPriorityQueue {
         // Both have items: alternate (stream gets slight preference
         // by going first, but we don't drain it exclusively)
         // Use total parity for simple round-robin
-        if self.total % 2 == 0 {
+        if self.total.is_multiple_of(2) {
             self.pop_stream().or_else(|| self.pop_priority())
         } else {
             self.pop_priority().or_else(|| self.pop_stream())

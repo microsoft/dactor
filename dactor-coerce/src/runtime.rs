@@ -511,14 +511,13 @@ impl<A: Actor + Send + Sync + 'static> ActorRef<A> for CoerceActorRef<A> {
         }
 
         let dispatch: Box<dyn Dispatch<A>> = Box::new(TypedDispatch { msg });
-        self.send_dispatch(dispatch).map_err(|e| {
+        self.send_dispatch(dispatch).inspect_err(|e| {
             let reason = if e.0.contains("full") {
                 DeadLetterReason::MailboxFull
             } else {
                 DeadLetterReason::ActorStopped
             };
             self.notify_dead_letter(std::any::type_name::<M>(), SendMode::Tell, reason);
-            e
         })
     }
 
@@ -567,14 +566,13 @@ impl<A: Actor + Send + Sync + 'static> ActorRef<A> for CoerceActorRef<A> {
             reply_tx: tx,
             cancel,
         });
-        self.send_dispatch(dispatch).map_err(|e| {
+        self.send_dispatch(dispatch).inspect_err(|e| {
             let reason = if e.0.contains("full") {
                 DeadLetterReason::MailboxFull
             } else {
                 DeadLetterReason::ActorStopped
             };
             self.notify_dead_letter(std::any::type_name::<M>(), SendMode::Ask, reason);
-            e
         })?;
         Ok(AskReply::new(rx))
     }
@@ -1017,7 +1015,7 @@ impl CoerceRuntime {
     /// `system_actor_refs()` returns the native actor references.
     ///
     /// Uses default configuration (unbounded mailboxes, no pooling).
-    /// For custom configuration, use [`start_system_actors_with_config()`].
+    /// For custom configuration, use [`Self::start_system_actors_with_config()`].
     pub fn start_system_actors(&mut self) {
         self.start_system_actors_with_config(dactor::SystemActorConfig::default());
     }

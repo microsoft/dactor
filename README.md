@@ -11,11 +11,15 @@ logic.
 
 ## Quick Start
 
+Version 0.4.0 requires Rust 1.94.1 or newer and updates the public adapter
+dependencies to ractor 0.16, kameo 0.22, kube 5, prost/tonic 0.14, and
+reqwest 0.13. Consumers using these dependencies directly must migrate with them.
+
 Add dactor to your project:
 
 ```toml
 [dependencies]
-dactor = { version = "0.2", features = ["test-support"] }
+dactor = { version = "0.4", features = ["test-support"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
 ```
 
@@ -82,8 +86,8 @@ production, pick a runtime adapter:
 
 ```toml
 [dependencies]
-dactor = "0.2"
-dactor-ractor = "0.2"   # or dactor-kameo / dactor-coerce
+dactor = "0.4"
+dactor-ractor = "0.4"   # or dactor-kameo / dactor-coerce
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
 ```
 

@@ -15,7 +15,8 @@ categories = ["concurrency", "development-tools::testing"]
 
 [dependencies]
 dactor.workspace = true
-tonic = "0.13"
+tonic = "0.14.9"
+tonic-prost = "0.14.9"
 prost.workspace = true
 tokio = { version = "1", features = ["process", "sync", "rt", "rt-multi-thread", "time", "net", "macros", "io-util"] }
 tokio-stream = { workspace = true, features = ["sync"] }
@@ -28,7 +29,8 @@ async-trait.workspace = true
 
 [build-dependencies]
 protoc-bin-vendored = "3"
-tonic-build = "0.13"
+prost-build = "0.14.4"
+tonic-prost-build = "0.14.9"
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full", "test-util"] }

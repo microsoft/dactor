@@ -2,7 +2,7 @@
 //!
 //! System messages (spawn, watch, cancel, peer management) use a fixed protobuf
 //! wire format for compact encoding and native schema evolution. Application
-//! messages remain pluggable via [`MessageSerializer`](crate::remote::MessageSerializer).
+//! messages remain pluggable via [`MessageSerializer`].
 //!
 //! # Encoding system message bodies
 //!

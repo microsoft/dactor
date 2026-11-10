@@ -21,7 +21,7 @@
 //! # Relation to `BroadcastRef`
 //!
 //! `ProcessingGroup` manages **membership** (join/leave/list).
-//! [`BroadcastRef`](crate::broadcast::BroadcastRef) manages **messaging**
+//! [`BroadcastRef`] manages **messaging**
 //! (tell/ask to all members).  They compose:
 //! `group.to_broadcast()` returns a `BroadcastRef` snapshot.
 //!

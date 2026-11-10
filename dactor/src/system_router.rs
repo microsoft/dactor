@@ -3,7 +3,7 @@
 //! When a [`WireEnvelope`] arrives on a node, the transport layer must decide
 //! whether it targets a user actor or a system actor. System messages carry
 //! well-known [`message_type`](WireEnvelope::message_type) values (defined in
-//! [`system_actors`](crate::system_actors)) and must be routed to the
+//! [`system_actors`]) and must be routed to the
 //! corresponding system actor mailbox.
 //!
 //! The [`SystemMessageRouter`] trait is implemented by each adapter runtime

@@ -15,7 +15,7 @@ keywords = ["actor", "distributed", "ractor", "framework", "runtime"]
 
 [dependencies]
 dactor = { workspace = true, features = ["serde"] }
-ractor = "0.15"
+ractor = "0.16.6"
 tokio = { workspace = true, features = ["sync", "rt", "time", "macros", "rt-multi-thread"] }
 async-trait.workspace = true
 tokio-util.workspace = true

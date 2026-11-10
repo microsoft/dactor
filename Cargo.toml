@@ -3,9 +3,9 @@ members = ["dactor", "dactor-ractor", "dactor-kameo", "dactor-test-harness", "da
 resolver = "2"
 
 [workspace.package]
-version = "0.3.3"
+version = "0.4.0"
 edition = "2021"
-rust-version = "1.70"
+rust-version = "1.94.1"
 authors = ["Yaming Liu <ymliu1978@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/microsoft/dactor"
@@ -14,8 +14,8 @@ categories = ["concurrency", "network-programming"]
 
 [workspace.dependencies]
 # Internal crates
-dactor = { version = "0.3.3", path = "dactor" }
-dactor-test-harness = { version = "0.3.3", path = "dactor-test-harness" }
+dactor = { version = "0.4.0", path = "dactor" }
+dactor-test-harness = { version = "0.4.0", path = "dactor-test-harness" }
 
 # Shared external dependencies
 async-trait = "0.1"
@@ -27,4 +27,4 @@ tracing = "0.1"
 tracing-subscriber = "0.3"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-prost = "0.13"
+prost = "0.14.4"
